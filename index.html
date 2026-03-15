@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harvard-MIT Ukraine Trek 2026</title>
+  <meta name="description" content="Harvard-MIT Ukraine Trek 2026 is an immersive trek for students and alumni interested in Ukraine's leadership, resilience, innovation, and recovery.">
+  <style>
+    :root {
+      --blue: #1157b5;
+      --blue-deep: #0a2f68;
+      --yellow: #f0c533;
+      --paper: #fbf7ef;
+      --ink: #14171d;
+      --muted: rgba(20, 23, 29, 0.72);
+      --line: rgba(20, 23, 29, 0.1);
+      --card: rgba(255, 251, 243, 0.82);
+      --shadow: 0 24px 60px rgba(10, 24, 52, 0.14);
+      --radius: 28px;
+      --wrap: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI Variable", "Aptos", "Trebuchet MS", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(240, 197, 51, 0.22), transparent 24%),
+        linear-gradient(180deg, #e4edf8 0%, #f7f2e8 36%, #fcfaf5 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      width: min(var(--wrap), calc(100% - 24px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      padding: 18px 0 0;
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: rgba(255, 251, 243, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 28px rgba(10, 24, 52, 0.08);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .flag {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, var(--blue) 0 50%, var(--yellow) 50% 100%);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.45);
+    }
+
+    .links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 15px;
+      color: var(--muted);
+    }
+
+    .hero {
+      padding: 16px 0 32px;
+    }
+
+    .hero-shell {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 18px;
+      min-height: 720px;
+      padding: clamp(20px, 3vw, 34px);
+      border-radius: 36px;
+      overflow: hidden;
+      position: relative;
+      color: white;
+      background:
+        linear-gradient(140deg, rgba(8, 29, 63, 0.92), rgba(17, 87, 181, 0.42)),
+        radial-gradient(circle at 18% 22%, rgba(255, 233, 169, 0.46), transparent 28%),
+        linear-gradient(180deg, #98b6cc 0%, #d7c6a0 48%, #5b5447 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-shell::before,
+    .hero-shell::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      border-radius: 44% 56% 55% 45% / 55% 40% 60% 45%;
+      transform: rotate(-8deg);
+      box-shadow: inset 0 0 50px rgba(255,255,255,0.12);
+    }
+
+    .hero-shell::before {
+      top: 24px;
+      width: 720px;
+      height: 290px;
+      background: linear-gradient(180deg, rgba(38, 96, 188, 0.96), rgba(15, 58, 127, 0.9));
+    }
+
+    .hero-shell::after {
+      bottom: 12px;
+      width: 760px;
+      height: 260px;
+      background: linear-gradient(180deg, rgba(240, 197, 51, 0.98), rgba(219, 167, 19, 0.92));
+    }
+
+    .hero-main, .hero-side {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 8px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      width: fit-content;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "Bahnschrift", "Arial Narrow", sans-serif;
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(58px, 12vw, 140px);
+      max-width: 8ch;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      font-size: clamp(19px, 2vw, 24px);
+      line-height: 1.45;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .fact {
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.14);
+      backdrop-filter: blur(10px);
+    }
+
+    .fact strong {
+      display: block;
+      font-size: 26px;
+      font-family: "Bahnschrift", "Arial Narrow", sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    .fact span {
+      display: block;
+      margin-top: 6px;
+      font-size: 15px;
+      color: rgba(255,255,255,0.86);
+      line-height: 1.45;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .button.primary {
+      background: var(--yellow);
+      color: #191400;
+      box-shadow: 0 12px 28px rgba(240, 197, 51, 0.28);
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: white;
+    }
+
+    .hero-side {
+      align-self: end;
+      margin: clamp(10px, 4vw, 28px);
+      padding: 22px;
+      border-radius: 28px;
+      background: rgba(255, 251, 243, 0.9);
+      color: var(--ink);
+      box-shadow: 0 14px 36px rgba(10, 24, 52, 0.18);
+    }
+
+    .label {
+      margin-bottom: 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: rgba(20,23,29,0.56);
+    }
+
+    .hero-side h2 {
+      font-size: clamp(34px, 4vw, 54px);
+      margin-bottom: 14px;
+    }
+
+    .hero-side p {
+      margin: 0 0 14px;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .hero-side ul {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 18px 0 34px;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      margin-bottom: 8px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(20,23,29,0.56);
+    }
+
+    .section-head h2 {
+      font-size: clamp(42px, 6vw, 72px);
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .section-head p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .card {
+      padding: 22px;
+      border-radius: var(--radius);
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 0 12px 32px rgba(10, 24, 52, 0.07);
+      backdrop-filter: blur(10px);
+    }
+
+    .card h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+    }
+
+    .card p, .card li {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .panel {
+      padding: 24px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.84), rgba(248,243,234,0.92));
+      box-shadow: 0 16px 40px rgba(10, 24, 52, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .panel::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      bottom: -90px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(240, 197, 51, 0.18), transparent 70%);
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .item {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(17, 87, 181, 0.06);
+      border: 1px solid rgba(17, 87, 181, 0.08);
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ink);
+    }
+
+    .stats {
+      display: grid;
+      gap: 18px;
+      align-content: start;
+      min-height: 0;
+      background: linear-gradient(180deg, rgba(10, 47, 104, 0.96), rgba(17, 87, 181, 0.92));
+      color: white;
+    }
+
+    .stats .big {
+      font-family: "Bahnschrift", "Arial Narrow", sans-serif;
+      font-size: clamp(52px, 7vw, 96px);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+      margin-bottom: 0;
+    }
+
+    .stats p {
+      color: rgba(255,255,255,0.84);
+      margin: 0;
+    }
+
+    .stat-row {
+      display: grid;
+      gap: 8px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .stat-row:first-of-type {
+      padding-top: 4px;
+      border-top: 0;
+    }
+
+    .gallery-shell {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .gallery-stage {
+      position: relative;
+      min-height: 560px;
+      border-radius: 34px;
+      overflow: hidden;
+      box-shadow: 0 22px 56px rgba(10, 24, 52, 0.16);
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,0.12), transparent 34%),
+        linear-gradient(180deg, #102952 0%, #16396d 52%, #0b1f43 100%);
+    }
+
+    .gallery-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.55s ease;
+    }
+
+    .gallery-slide.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .gallery-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 28px;
+      color: white;
+      background: linear-gradient(180deg, rgba(7, 17, 36, 0) 0%, rgba(7, 17, 36, 0.82) 52%, rgba(7, 17, 36, 0.96) 100%);
+    }
+
+    .gallery-tag {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+
+    .gallery-overlay h3 {
+      font-size: clamp(30px, 4vw, 48px);
+      margin-bottom: 8px;
+      color: white;
+    }
+
+    .gallery-overlay p {
+      margin: 0;
+      max-width: 52ch;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.88);
+    }
+
+    .gallery-controls {
+      display: none;
+    }
+
+    .gallery-side {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .gallery-intro {
+      padding: 24px;
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(250,246,238,0.92));
+      box-shadow: 0 16px 40px rgba(10, 24, 52, 0.08);
+    }
+
+    .gallery-intro p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .gallery-meta {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .gallery-pill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(17, 87, 181, 0.08);
+      border: 1px solid rgba(17, 87, 181, 0.12);
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .safety {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .quote {
+      padding: 26px;
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.88), rgba(250,246,238,0.92));
+      box-shadow: 0 16px 40px rgba(10, 24, 52, 0.08);
+      position: relative;
+    }
+
+    .quote::before {
+      content: "“";
+      position: absolute;
+      top: 8px;
+      left: 16px;
+      font-family: Georgia, serif;
+      font-size: 78px;
+      line-height: 1;
+      color: rgba(17, 87, 181, 0.16);
+    }
+
+    .quote p {
+      margin: 0 0 12px;
+      padding-left: 14px;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .quote strong {
+      display: block;
+      padding-left: 14px;
+      color: rgba(20,23,29,0.56);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .cta {
+      padding-bottom: 42px;
+    }
+
+    .cta-band {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 16px;
+      padding: 26px;
+      border-radius: 34px;
+      background: linear-gradient(135deg, rgba(10, 47, 104, 0.97), rgba(17, 87, 181, 0.86));
+      color: white;
+      box-shadow: 0 20px 54px rgba(10, 24, 52, 0.16);
+    }
+
+    .cta-band h2 {
+      font-size: clamp(42px, 6vw, 70px);
+      margin-bottom: 10px;
+    }
+
+    .cta-band p {
+      margin: 0;
+      color: rgba(255,255,255,0.86);
+      line-height: 1.65;
+      font-size: 18px;
+      max-width: 620px;
+    }
+
+    .cta-card {
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .footer {
+      padding: 0 0 26px;
+      font-size: 14px;
+      color: rgba(20,23,29,0.56);
+    }
+
+    @media (max-width: 1000px) {
+      .hero-shell, .split, .gallery-shell, .cta-band { grid-template-columns: 1fr; }
+      .safety { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 760px) {
+      .facts, .grid.three, .grid.two, .safety { grid-template-columns: 1fr; }
+      .nav-bar { border-radius: 28px; }
+      .links { justify-content: flex-start; }
+      .hero-shell { min-height: auto; }
+      .hero-shell::before { width: 520px; height: 210px; right: -150px; }
+      .hero-shell::after { width: 560px; height: 200px; right: -170px; }
+      .gallery-stage { min-height: 420px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <div class="nav-bar">
+        <a class="brand" href="#top">
+          <span class="flag" aria-hidden="true"></span>
+          <span>Harvard-MIT Ukraine Trek 2026</span>
+        </a>
+        <nav class="links" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#safety">Safety</a>
+          <a href="#join">Join</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-shell">
+          <div class="hero-main">
+            <div>
+              <div class="kicker">Organized by Harvard & MIT Students</div>
+              <h1>Harvard-MIT Ukraine Trek 2026</h1>
+              <p class="hero-copy">
+                An immersive trek for students and alumni who want to engage with Ukraine’s leadership,
+                resilience, innovation, and recovery firsthand. The 2026 preparation has begun,
+                so register if you are interested to stay in the loop.
+              </p>
+            </div>
+
+            <div class="facts">
+              <div class="fact">
+                <strong>One Week</strong>
+                <span>Last year’s trek brought participants together for an immersive, multi-day experience.</span>
+              </div>
+              <div class="fact">
+                <strong>Multiple Cities</strong>
+                <span>Participants traveled between the capital and western Ukraine for a broader perspective.</span>
+              </div>
+              <div class="fact">
+                <strong>Cross-sector</strong>
+                <span>Government, civil society, innovation, culture, and recovery were all part of the experience.</span>
+              </div>
+            </div>
+
+            <div class="actions">
+              <a class="button primary" href="mailto:ukrainetrek.team@gmail.com?subject=Ukraine%20Trek%202026%20Interest">Join the interest list</a>
+              <a class="button secondary" href="#experience">See the vision</a>
+            </div>
+          </div>
+
+          <aside class="hero-side" id="join">
+            <div class="label">Harvard-MIT Ukraine Trek 2026</div>
+            <h2>Join us early.</h2>
+            <p>
+              Get updates on dates, trek structure, and application details. Register now if you want to join the most relevant trek of the year.
+            </p>
+            <ul>
+              <li>Info session &amp; application details</li>
+              <li>Automatic updates</li>
+              <li>Be part of the community</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Why this trek</div>
+          <h2>Why Ukraine?</h2>
+          <p>
+            Ukraine remains the most relevant country in the world today for anyone interested in geopolitics,
+            democratic resilience, defense innovation, public leadership, recovery, and national identity.
+          </p>
+        </div>
+
+        <div class="grid three">
+          <article class="card">
+            <h3>Learning</h3>
+            <p>Gain firsthand insight into policy challenges, economic recovery, security strategy, and leadership under pressure.</p>
+          </article>
+          <article class="card">
+            <h3>Geopolitics</h3>
+            <p>Engage with one of the defining conflicts shaping the global order and democratic resilience.</p>
+          </article>
+          <article class="card">
+            <h3>Innovation</h3>
+            <p>Witness advances in defense tech, digital infrastructure, and public-private collaboration.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="wrap">
+        <div class="split">
+          <div class="panel">
+            <div class="section-head">
+              <div class="eyebrow">What to expect</div>
+              <h2>An immersive and wide-ranging trek.</h2>
+              <p>
+                Last year’s trek combined high-level meetings, site visits, cultural context, and on-the-ground learning.
+                It gave participants a chance to engage directly with the people and institutions shaping Ukraine’s present and future.
+              </p>
+            </div>
+
+            <div class="list">
+              <div class="item">
+                <strong>Senior officials, activists, and NGOs</strong>
+                Engage with leading Ukrainian voices across government, civil society, and public life.
+              </div>
+              <div class="item">
+                <strong>Defense tech, resilience, and recovery</strong>
+                Explore the country’s response through innovation, defense technology, and rebuilding efforts.
+              </div>
+              <div class="item">
+                <strong>Business, innovation, and digital transformation</strong>
+                Meet organizations and founders building under extraordinary conditions.
+              </div>
+              <div class="item">
+                <strong>History, culture, and identity</strong>
+                Explore Ukraine’s rich history and gain firsthand insight into the country’s identity and civic spirit.
+              </div>
+            </div>
+          </div>
+
+          <aside class="card stats">
+            <div class="eyebrow" style="color: rgba(255,255,255,0.66);">Last year at a glance</div>
+            <div class="stat-row">
+              <div class="big">2 cities</div>
+              <p>Lviv &amp; Kyiv</p>
+            </div>
+            <div class="stat-row">
+              <div class="big">1 week</div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">A glimpse of the experience</div>
+          <h2>From public leadership to cultural life.</h2>
+          <p>
+            Previous participants encountered policymakers, universities, NGOs, innovators, cultural institutions,
+            recovery initiatives, and communities living with the realities of war and resilience every day.
+          </p>
+        </div>
+
+        <div class="grid two">
+          <article class="card">
+            <h3>In the capital</h3>
+            <p>
+              The capital portion emphasized political leadership, wartime governance, innovation ecosystems,
+              humanitarian response, and places where Ukraine’s recent history can be felt directly.
+            </p>
+          </article>
+          <article class="card">
+            <h3>In western Ukraine</h3>
+            <p>
+              The western part of the trek broadened into culture, universities, rehabilitation, civic resilience,
+              local leadership, and the longer arc of recovery and reconstruction.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Ukraine Trek 2026 in pictures</div>
+          <h2>See the journey through the moments that made it unforgettable.</h2>
+          <p>
+            A curated visual sequence brings the trek to life through Kyiv, Lviv, institutions, resilience,
+            and the human energy that makes Ukraine impossible to forget.
+          </p>
+        </div>
+
+        <div class="gallery-shell">
+          <div class="gallery-stage" aria-live="polite">
+            <article class="gallery-slide active" data-gallery-slide>
+              <img src="Kiyv City Hall Day-54.jpg" alt="Kyiv City Hall lit against the evening sky." loading="eager">
+              <div class="gallery-overlay">
+                <div class="gallery-tag">Kyiv civic life</div>
+                <h3>Stand at the heart of modern Kyiv</h3>
+                <p>A striking first impression of the capital, where public institutions, national resolve, and the rhythm of contemporary Ukraine come sharply into focus.</p>
+              </div>
+            </article>
+
+            <article class="gallery-slide" data-gallery-slide>
+              <img src="Kiev second day churches-17.jpg" alt="Historic church architecture in Kyiv." loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-tag">History and identity</div>
+                <h3>Discover the soul behind the headlines</h3>
+                <p>Beyond geopolitics, the trek opens a window into Ukraine's spiritual depth, historical memory, and the cultural foundations of national identity.</p>
+              </div>
+            </article>
+
+            <article class="gallery-slide" data-gallery-slide>
+              <img src="Kiev second day churches-18.jpg" alt="Another Kyiv church scene during the trek." loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-tag">Kyiv</div>
+                <h3>Walk through a city layered with meaning</h3>
+                <p>Every street and skyline reveals another layer of Ukraine's past and present, turning the city itself into part of the learning experience.</p>
+              </div>
+            </article>
+
+            <article class="gallery-slide" data-gallery-slide>
+              <img src="Kiev first day train station--7.jpg" alt="Train station scene from the first day in Kyiv." loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-tag">Movement and logistics</div>
+                <h3>Experience the pulse of a country in motion</h3>
+                <p>From arrival onward, the trek is immersive and real, shaped by the movement, infrastructure, and everyday determination that keep Ukraine going.</p>
+              </div>
+            </article>
+
+            <article class="gallery-slide" data-gallery-slide>
+              <img src="Bucha Irpin Day-9.jpg" alt="Scene from Bucha and Irpin during the trek." loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-tag">Witness and recovery</div>
+                <h3>See resilience where it matters most</h3>
+                <p>In places marked by loss and rebuilding, participants encounter the courage, honesty, and determination that define Ukraine's recovery.</p>
+              </div>
+            </article>
+
+            <article class="gallery-slide" data-gallery-slide>
+              <img src="Military Day-12.jpg" alt="Military-related scene during the trek." loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-tag">Security context</div>
+                <h3>Understand the stakes up close</h3>
+                <p>The trek offers direct exposure to the security realities shaping Europe today, giving context that no classroom or news feed can fully replicate.</p>
+              </div>
+            </article>
+
+            <article class="gallery-slide" data-gallery-slide>
+              <img src="Lviv 1-6.jpg" alt="Street scene in Lviv." loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-tag">Lviv</div>
+                <h3>Step into the texture of western Ukraine</h3>
+                <p>Lviv adds warmth, cultural richness, and a wider perspective, showing how daily life, creativity, and civic pride endure under pressure.</p>
+              </div>
+            </article>
+
+            <article class="gallery-slide" data-gallery-slide>
+              <img src="Uni Lviv-21.jpg" alt="University scene in Lviv." loading="lazy">
+              <div class="gallery-overlay">
+                <div class="gallery-tag">University visits</div>
+                <h3>Meet the minds shaping Ukraine's future</h3>
+                <p>University visits connect the trek directly to students, ideas, and institution-building, making the experience especially powerful for an academic audience.</p>
+              </div>
+            </article>
+          </div>
+
+          <aside class="gallery-side">
+            <div class="gallery-intro">
+              <div class="eyebrow">Recommended use</div>
+              <p>
+                This format lets every image land properly. Portrait and landscape photos are both shown in full,
+                while the sequence itself feels more like an invitation than a simple gallery.
+              </p>
+              <div class="gallery-meta">
+                <div class="gallery-pill">One image at a time</div>
+                <div class="gallery-pill">Auto-rotates slowly</div>
+                <div class="gallery-pill">Full portrait and landscape view</div>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="safety">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Security approach</div>
+          <h2>We are preparing carefully.</h2>
+          <p>
+            Safety is central to how the trek is designed. Last year’s trek happened during one of the largest air raids,
+            but we made sure everyone is safe and protected. This is assured through disciplined protocols, close coordination
+            with local partners, and a realistic understanding of wartime routines.
+          </p>
+        </div>
+
+        <div class="safety">
+          <div class="card">
+            <h3>Local coordination</h3>
+            <p>We coordinate closely with partners and local experts on the ground.</p>
+          </div>
+          <div class="card">
+            <h3>Shelter-aware logistics</h3>
+            <p>Hotels, venues, and transportation are planned with alerts, shelters, and emergency procedures in mind.</p>
+          </div>
+          <div class="card">
+            <h3>Flexible schedules</h3>
+            <p>Plans may change depending on the situation on the ground, and adaptability is part of the trek.</p>
+          </div>
+          <div class="card">
+            <h3>Preparedness and wellbeing</h3>
+            <p>Practical briefings, clear protocols, and attention to participant wellbeing are part of the preparation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="grid two">
+          <div class="panel">
+            <div class="eyebrow">Who is this trek for?</div>
+            <h2>People who are curious, engaged, and resilient.</h2>
+            <div class="list">
+              <div class="item">
+                <strong>Curious</strong>
+                For people with a global mindset and a serious interest in policy, conflict, innovation, and recovery.
+              </div>
+              <div class="item">
+                <strong>Engaged</strong>
+                For active listeners who want to learn, contribute, and be fully present.
+              </div>
+              <div class="item">
+                <strong>Resilient and mission-driven</strong>
+                Best suited for people who are emotionally mature, adaptable, and motivated to understand and support Ukraine’s future.
+              </div>
+            </div>
+          </div>
+
+          <div class="quote">
+            <p>
+              The best way to hear and learn about Ukraine is from the people who are there:
+              leaders, builders, organizers, innovators, and communities carrying the country forward.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="wrap">
+        <div class="cta-band">
+          <div>
+            <div class="eyebrow" style="color: rgba(255,255,255,0.68);">Stay in the loop</div>
+            <h2>Sign up now to get updates first for the Ukraine Trek 2026.</h2>
+            <p>
+              If you want to be part of the most exciting and important trek of the year and hear first when applications open,
+              reach out now. We would love to keep you in the loop as Ukraine Trek 2026 takes shape.
+            </p>
+          </div>
+          <div class="cta-card">
+            <div class="label" style="color: rgba(255,255,255,0.7);">Contact</div>
+            <p style="margin: 0 0 14px; color: rgba(255,255,255,0.9); font-size: 18px;">ukrainetrek.team@gmail.com</p>
+            <div class="actions">
+              <a class="button primary" href="mailto:ukrainetrek.team@gmail.com?subject=Ukraine%20Trek%202026%20Interest">Register interest</a>
+              <a class="button secondary" href="mailto:ukrainetrek.team@gmail.com?subject=Ukraine%20Trek%202026%20Question">Ask a question</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      Harvard-MIT Ukraine Trek 2026 concept site, based on the wording, themes, and design language of prior trek materials while keeping 2026 details intentionally open.
+    </div>
+  </footer>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('[data-gallery-slide]'));
+    let activeIndex = 0;
+    let autoRotate = null;
+
+    function showSlide(index) {
+      activeIndex = (index + slides.length) % slides.length;
+      slides.forEach((slide, idx) => slide.classList.toggle('active', idx === activeIndex));
+    }
+
+    function restartAutoRotate() {
+      window.clearInterval(autoRotate);
+      autoRotate = window.setInterval(() => showSlide(activeIndex + 1), 5000);
+    }
+
+    showSlide(0);
+    restartAutoRotate();
+  </script>
+</body>
+</html>
